@@ -1,5 +1,6 @@
-// useReducer: simple Counter
+// useReducer: simple Counter - accept the step as the action
 // http://localhost:3000/isolated/exercise/01.js
+// 💯 accept the step as the action
 
 import * as React from 'react'
 
