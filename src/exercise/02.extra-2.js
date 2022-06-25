@@ -50,6 +50,8 @@ function useAsync(initialState) {
 }
 
 function PokemonInfo({pokemonName}) {
+    // 💰 destructuring this here now because it just felt weird to call this
+    // "state" still when it's also returning a function called "run" 🙃
     const {data: pokemon, status, error, run} = useAsync({
         status: pokemonName ? 'pending' : 'idle'
     })
@@ -58,7 +60,11 @@ function PokemonInfo({pokemonName}) {
         if (!pokemonName) {
             return
         }
-        return run(fetchPokemon(pokemonName))
+        // 💰 note the absence of `await` here. We're literally passing the promise
+        // to `run` so `useAsync` can attach it's own `.then` handler on it to keep
+        // track of the state of the promise.
+        const pokemonPromise = fetchPokemon(pokemonName)
+        run(pokemonPromise)
     }, [pokemonName, run])
 
     switch (status) {
