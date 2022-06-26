@@ -1,5 +1,5 @@
 // useCallback: custom hooks
-// http://localhost:3000/isolated/exercise/02.extra-1.js
+// http://localhost:3000/isolated/exercise/02.extra-2.js
 
 import * as React from 'react'
 import {
